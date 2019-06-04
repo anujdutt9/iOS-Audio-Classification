@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SoundClassifier" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB2-Zm-vXc">
+                                <rect key="frame" x="0.0" y="106" width="414" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="CfI-4u-LpK"/>
+                                    <constraint firstAttribute="width" constant="414" id="Sd6-yq-WMk"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="xCl-Dw-6rs"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="wkU-e8-Bam"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick an Audio File !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ko-j8-Ren">
+                                <rect key="frame" x="78" y="58" width="258" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="r2d-3e-45G"/>
+                                    <constraint firstAttribute="width" constant="258" id="zrz-0K-Z4X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9K-L5-4Ie">
+                                <rect key="frame" x="117" y="411" width="181" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="181" id="GJu-LB-zUc"/>
+                                    <constraint firstAttribute="height" constant="47" id="s16-cF-YKY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                <state key="normal" title="Play Audio">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="playSelectedFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hSH-BL-hWw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jad-sz-d6c">
+                                <rect key="frame" x="78" y="485" width="266" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="7Qq-ez-fdu"/>
+                                    <constraint firstAttribute="width" constant="266" id="sgo-bP-dME"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                <state key="normal" title="Make Prediction">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="makePredictions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WNC-0r-4Ag"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected File:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnW-PT-wZa">
+                                <rect key="frame" x="20" y="344" width="152" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="Pqb-F4-tbQ"/>
+                                    <constraint firstAttribute="width" constant="152" id="mJx-fW-6C1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yb5-R3-r0v">
+                                <rect key="frame" x="186" y="343" width="208" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="6GE-1P-U6i"/>
+                                    <constraint firstAttribute="height" constant="30" id="XKH-di-08f"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Bwk-jv-bXP">
+                                <rect key="frame" x="20" y="563" width="374" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="X4d-gE-nre"/>
+                                    <constraint firstAttribute="height" constant="62" id="Znw-qo-Zcu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IJH-v4-BSJ">
+                                <rect key="frame" x="20" y="633" width="374" height="241"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="241" id="taM-vC-Zsg"/>
+                                    <constraint firstAttribute="width" constant="374" id="uQv-R7-Qew"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bwk-jv-bXP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BWY-6V-xQ9"/>
+                            <constraint firstItem="N9K-L5-4Ie" firstAttribute="top" secondItem="CnW-PT-wZa" secondAttribute="bottom" constant="38" id="C3U-qs-HoK"/>
+                            <constraint firstItem="IJH-v4-BSJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="D88-lh-EnE"/>
+                            <constraint firstItem="CB2-Zm-vXc" firstAttribute="top" secondItem="4ko-j8-Ren" secondAttribute="bottom" constant="15" id="DJL-k1-Quu"/>
+                            <constraint firstItem="yb5-R3-r0v" firstAttribute="leading" secondItem="CnW-PT-wZa" secondAttribute="trailing" constant="14" id="DkI-M3-e1U"/>
+                            <constraint firstItem="CB2-Zm-vXc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DpZ-3u-nYV"/>
+                            <constraint firstItem="N9K-L5-4Ie" firstAttribute="top" secondItem="CnW-PT-wZa" secondAttribute="bottom" constant="38" id="GZK-4x-c3h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jad-sz-d6c" secondAttribute="trailing" constant="70" id="HeT-tC-A2c"/>
+                            <constraint firstItem="jad-sz-d6c" firstAttribute="top" secondItem="N9K-L5-4Ie" secondAttribute="bottom" constant="27" id="JpW-Vt-6LF"/>
+                            <constraint firstItem="CnW-PT-wZa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MBi-lU-jwu"/>
+                            <constraint firstAttribute="bottom" secondItem="IJH-v4-BSJ" secondAttribute="bottom" constant="22" id="O9H-xd-wp4"/>
+                            <constraint firstItem="yb5-R3-r0v" firstAttribute="top" secondItem="CB2-Zm-vXc" secondAttribute="bottom" constant="21" id="PzF-Ds-cbb"/>
+                            <constraint firstItem="N9K-L5-4Ie" firstAttribute="top" secondItem="yb5-R3-r0v" secondAttribute="bottom" constant="38" id="QDb-Vh-cLb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N9K-L5-4Ie" secondAttribute="trailing" constant="116" id="QtV-N6-gAI"/>
+                            <constraint firstItem="4ko-j8-Ren" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="UW7-ki-BQD"/>
+                            <constraint firstItem="IJH-v4-BSJ" firstAttribute="top" secondItem="Bwk-jv-bXP" secondAttribute="bottom" constant="8" id="Uey-gQ-FeF"/>
+                            <constraint firstItem="IJH-v4-BSJ" firstAttribute="top" secondItem="Bwk-jv-bXP" secondAttribute="bottom" constant="8" id="Zk9-33-KoU"/>
+                            <constraint firstItem="CnW-PT-wZa" firstAttribute="top" secondItem="CB2-Zm-vXc" secondAttribute="bottom" constant="22" id="bgo-Iv-VLO"/>
+                            <constraint firstItem="N9K-L5-4Ie" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="dA4-94-QsX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yb5-R3-r0v" secondAttribute="trailing" constant="20" id="dU7-yZ-82m"/>
+                            <constraint firstItem="Bwk-jv-bXP" firstAttribute="top" secondItem="jad-sz-d6c" secondAttribute="bottom" constant="31" id="ff5-zR-s56"/>
+                            <constraint firstItem="jad-sz-d6c" firstAttribute="top" secondItem="N9K-L5-4Ie" secondAttribute="bottom" constant="27" id="iQI-5Q-FHw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ko-j8-Ren" secondAttribute="trailing" constant="78" id="lLf-7h-n68"/>
+                            <constraint firstItem="Bwk-jv-bXP" firstAttribute="top" secondItem="jad-sz-d6c" secondAttribute="bottom" constant="31" id="lSa-YZ-Lag"/>
+                            <constraint firstItem="yb5-R3-r0v" firstAttribute="top" secondItem="CB2-Zm-vXc" secondAttribute="bottom" constant="21" id="mRD-Tu-R2p"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IJH-v4-BSJ" secondAttribute="trailing" constant="20" id="mgg-mn-Zd1"/>
+                            <constraint firstItem="jad-sz-d6c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="obX-GP-TsH"/>
+                            <constraint firstItem="CB2-Zm-vXc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tLx-rc-gse"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bwk-jv-bXP" secondAttribute="trailing" constant="20" id="uCH-Pc-JT9"/>
+                            <constraint firstItem="yb5-R3-r0v" firstAttribute="leading" secondItem="CnW-PT-wZa" secondAttribute="trailing" constant="14" id="vm6-bB-Yv0"/>
+                            <constraint firstItem="CB2-Zm-vXc" firstAttribute="top" secondItem="4ko-j8-Ren" secondAttribute="bottom" constant="15" id="xRg-cS-XKh"/>
+                            <constraint firstItem="4ko-j8-Ren" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="zHg-ZX-Gdb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="audioPicker" destination="CB2-Zm-vXc" id="7Bg-7c-Zy1"/>
+                        <outlet property="mlModelPrediction" destination="Bwk-jv-bXP" id="D9X-tt-L6r"/>
+                        <outlet property="predictionImage" destination="IJH-v4-BSJ" id="4YV-7R-AXn"/>
+                        <outlet property="selectedAudioFileName" destination="yb5-R3-r0v" id="2wW-jC-UaN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>
