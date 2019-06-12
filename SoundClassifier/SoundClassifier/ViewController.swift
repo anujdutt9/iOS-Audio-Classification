@@ -19,12 +19,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var pickerData: [String] = [String]()
     var selectedAudioFile = ""
+    var selectedAudioFileURL: URL!
+    var audioPlayer: AVAudioPlayer?
     
     // Instantiate the ML Model
     let model:EnvSceneClassification = EnvSceneClassification()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mlModelPrediction.text = ""
         self.audioPicker.delegate = self
         self.audioPicker.dataSource = self
         self.pickerData = ["clock_tick", "crackling_fire", "chainsaw", "sneezing", "sea_waves", "rooster", "helicopter", "rain", "baby_crying", "cry", "dog_barking"]
@@ -46,23 +49,35 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Selected an Audio File to Play
         self.selectedAudioFileName.text = self.pickerData[row]
         self.selectedAudioFile = self.pickerData[row]
+        // Get Audio File Paths as URL
+        if let audioFileURL = Bundle.main.url(forResource: self.selectedAudioFile, withExtension: "wav"){
+            print("Audio File URL: \(audioFileURL)")
+            self.selectedAudioFileURL = audioFileURL
+        }
     }
     
     // Function to Play selected Audio File
     @IBAction func playSelectedFile(_ sender: Any) {
-        if (self.selectedAudioFile != ""){
-            // Get Audio File Paths as URL
-            if let audioFileURL = Bundle.main.url(forResource: self.selectedAudioFile, withExtension: "wav"){
-                print("Audio File URL: \(audioFileURL)")
-            }
+        //print("\n\nSlected File: \(self.selectedAudioFileURL)\n\n")
+        // To Do: Play Audio File
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            //try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: kAudioSessionProperty_OverrideCategoryDefaultToSpeaker)
+            try audioSession.setCategory(AVAudioSession.Category.playAndRecord, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+            audioPlayer = try AVAudioPlayer(contentsOf: self.selectedAudioFileURL)
+            audioPlayer!.prepareToPlay()
+            audioPlayer!.volume = 1.0
+            audioPlayer?.play()
+            //audioPlayer?.numberOfLoops = 1
         }
-        else{
-            fatalError("No audio file selected to play.")
+        catch{
+            fatalError("No audio file selected.")
         }
     }
     
     // Function to Process Audio and Make Predictions
     @IBAction func makePredictions(_ sender: Any) {
+        self.classifyAudio(audioFileName: self.selectedAudioFileURL)
     }
     
     // Function to Classify Audio File in one of 10 classes
@@ -142,7 +157,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let most_probable_label = max_sum_label
         let probability = max_sum / Float(results.count)
         print("Output: The Model thinks it's a: \(most_probable_label), with a probability of: \(probability)\n")
+        self.mlModelPrediction.text = "The Model thinks it's a: \(most_probable_label), with a probability of: \(probability)"
     }
     
 }
-
