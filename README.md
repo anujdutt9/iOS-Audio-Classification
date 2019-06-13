@@ -1,5 +1,7 @@
 # iOS-Audio-Classification
 
+***This repository contains the iOS apps for performing Audio Classification on static audio files as well as real time audio stream using iOS 13's SoundAnalysis API.*** 
+
 ## Sound Classifier
 
 Static audio files classification using the latest SoundAnalysis API.
