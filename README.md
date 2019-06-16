@@ -19,3 +19,7 @@ Audio classification on real time audio stream using SoundAnalysis API.
 # Resources
 
 https://apple.github.io/turicreate/docs/userguide/sound_classifier/
+
+https://developer.apple.com/documentation/soundanalysis
+
+https://developer.apple.com/documentation/soundanalysis/analyzing_audio_to_classify_sounds
